@@ -63,7 +63,6 @@ async function signOut() {
 
 <template>
   <form class="form-widget" @submit.prevent="updateProfile">
-    <Avatar v-model:path="avatar_path" @upload="updateProfile" />
     <div>
       <label for="email">Email</label>
       <input id="email" type="text" :value="user.email" disabled />
