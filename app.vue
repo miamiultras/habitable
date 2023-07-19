@@ -3,8 +3,13 @@ const user = useSupabaseUser()
 </script>
 
 <template>
-  <div class="container" style="padding: 50px 0 100px 0">
-    <Account v-if="user" />
-    <Auth v-else />
+  <div class="flex flex-col min-h-screen">
+    <Navbar />
+    <main class="flex-grow">
+      <NuxtPage />
+    </main>
+    <footer class="flex flex-col items-center font-mono">
+      footer
+    </footer>
   </div>
 </template>
