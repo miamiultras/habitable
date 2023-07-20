@@ -5,7 +5,7 @@ const user = useSupabaseUser()
 <template>
   <div class="flex flex-col min-h-screen">
     <Navbar />
-    <main class="flex-grow">
+    <main class="flex flex-grow">
       <NuxtPage />
     </main>
     <footer class="flex flex-col items-center font-mono">
