@@ -8,7 +8,8 @@ const handleLogin = async () => {
   try {
     loading.value = true
     const { error } = await supabase.auth.signInWithOtp({
-      email: email.value, options: {
+      email: email.value,
+      options: {
         emailRedirectTo: "http://localhost:3000"
       }
     })

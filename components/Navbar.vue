@@ -24,8 +24,7 @@ const navigation = [
         </div>
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div class="flex flex-shrink-0 items-center">
-            <img class="h-8 w-auto" src=""
-              alt="Logo" />
+            <img class="h-8 w-auto" src="" alt="Logo" />
           </div>
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
@@ -42,9 +41,7 @@ const navigation = [
               <MenuButton
                 class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                 <span class="sr-only">Open user menu</span>
-                <img class="h-8 w-8 rounded-full"
-                  src="/images/imagePlaceholder.jpeg"
-                  alt="" />
+                <img class="h-8 w-8 rounded-full" src="/images/imagePlaceholder.jpeg" alt="" />
               </MenuButton>
             </div>
             <transition enter-active-class="transition ease-out duration-100"
