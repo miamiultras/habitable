@@ -4,9 +4,17 @@ import Image from "next/image";
 export default function HomePage() {
   return (
     <main className="relative min-h-screen bg-black">
-      {/* Background with stars effect */}
-      <div className="absolute inset-0 bg-[url('/stars.png')] opacity-50" />
-      
+      {/* Background image with overlay */}
+      <Image
+        src="/images/terraformed_planet.webp"
+        alt="Space background"
+        fill
+        className="object-cover"
+        priority
+        quality={100}
+      />
+      <div className="absolute inset-0 bg-black/85" /> {/* Dark overlay */}
+
       <div className="relative flex min-h-screen flex-col items-center justify-center px-4">
         {/* Game logo/title */}
         <h1 className="mb-8 font-pixel text-5xl font-bold text-white">
