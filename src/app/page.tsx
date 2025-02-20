@@ -1,35 +1,61 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-        <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
-          Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
+    <main className="relative min-h-screen bg-black">
+      {/* Background with stars effect */}
+      <div className="absolute inset-0 bg-[url('/stars.png')] opacity-50" />
+      
+      <div className="relative flex min-h-screen flex-col items-center justify-center px-4">
+        {/* Game logo/title */}
+        <h1 className="mb-8 font-pixel text-5xl font-bold text-white">
+          HABITABLE
         </h1>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-            href="https://create.t3.gg/en/usage/first-steps"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">First Steps →</h3>
-            <div className="text-lg">
-              Just the basics - Everything you need to know to set up your
-              database and authentication.
+
+        {/* Login form */}
+        <div className="w-full max-w-md rounded-lg border-2 border-purple-500 bg-black/80 p-8 shadow-lg backdrop-blur">
+          <form className="space-y-6">
+            <div>
+              <label htmlFor="username" className="font-pixel text-sm text-purple-300">
+                USERNAME
+              </label>
+              <input
+                type="text"
+                id="username"
+                className="mt-1 w-full rounded border border-purple-500 bg-black/50 px-3 py-2 text-white focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50"
+              />
             </div>
-          </Link>
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-            href="https://create.t3.gg/en/introduction"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">Documentation →</h3>
-            <div className="text-lg">
-              Learn more about Create T3 App, the libraries it uses, and how to
-              deploy it.
+
+            <div>
+              <label htmlFor="password" className="font-pixel text-sm text-purple-300">
+                PASSWORD
+              </label>
+              <input
+                type="password"
+                id="password"
+                className="mt-1 w-full rounded border border-purple-500 bg-black/50 px-3 py-2 text-white focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50"
+              />
             </div>
-          </Link>
+
+            <div className="flex items-center justify-between">
+              <button
+                type="submit"
+                className="font-pixel w-full rounded bg-purple-600 px-4 py-2 text-white hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500/50"
+              >
+                LOGIN
+              </button>
+            </div>
+          </form>
+
+          <div className="mt-4 text-center">
+            <Link
+              href="/register"
+              className="font-pixel text-sm text-purple-300 hover:text-purple-400"
+            >
+              Create new account
+            </Link>
+          </div>
         </div>
       </div>
     </main>
