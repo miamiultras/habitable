@@ -1,7 +1,22 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function HomePage() {
+  const router = useRouter();
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const username = formData.get("username");
+    const password = formData.get("password");
+
+    if (username === "test" && password === "test") {
+      router.push("/game");
+    }
+  };
+
   return (
     <main className="relative min-h-screen bg-black">
       <Image
@@ -20,12 +35,13 @@ export default function HomePage() {
         </h1>
 
         <div className="w-full max-w-[320px] sm:max-w-md rounded-lg border-2 border-purple-500 bg-black/80 p-4 sm:p-8 shadow-lg backdrop-blur">
-          <form className="space-y-4 sm:space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             <div>
               <label htmlFor="username" className="font-pixel text-xs sm:text-sm text-purple-300">
                 USERNAME
               </label>
               <input
+                name="username"
                 type="text"
                 id="username"
                 className="mt-1 w-full rounded border border-purple-500 bg-black/50 px-3 py-1.5 sm:py-2 text-sm sm:text-base text-white focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50"
@@ -37,6 +53,7 @@ export default function HomePage() {
                 PASSWORD
               </label>
               <input
+                name="password"
                 type="password"
                 id="password"
                 className="mt-1 w-full rounded border border-purple-500 bg-black/50 px-3 py-1.5 sm:py-2 text-sm sm:text-base text-white focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50"
