@@ -17,3 +17,16 @@ body {
         0 0 20px rgba(255, 255, 255, 0.5),
         0 0 30px rgba(255, 255, 255, 0.3);
 }
+
+@keyframes slowPan {
+    from {
+        transform: scale(1.1) translate(0, 0);
+    }
+    to {
+        transform: scale(1.1) translate(-2%, -2%);
+    }
+}
+
+.bg-space {
+    animation: slowPan 60s ease-in-out infinite alternate;
+}
