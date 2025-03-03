@@ -1,30 +1,132 @@
 import { Planet, Building, Vehicle } from '@/types/game';
 
 const mockBuildings: Building[] = [
+    // Level 1 buildings
     {
-        id: 'crystal-mine',
-        name: 'Crystal Mine',
+        id: 'crystal-mine-1',
+        name: 'Crystal Mine Level 1',
         level: 1,
         production: { crystal: 10 },
         cost: { crystal: 100, metal: 50, energy: 5 },
-        image: '/images/mine.webp'
+        image: '/images/mine_level1.webp'
     },
     {
-        id: 'metal-refinery',
-        name: 'Metal Refinery',
+        id: 'metal-refinery-1',
+        name: 'Metal Refinery Level 1',
         level: 1,
         production: { metal: 10 },
         cost: { crystal: 50, metal: 100, energy: 5 },
-        image: '/images/refinery.webp'
+        image: '/images/factory_level1.webp'
     },
     {
-        id: 'power-plant',
-        name: 'Power Plant',
+        id: 'power-plant-1',
+        name: 'Power Plant Level 1',
         level: 1,
         production: { energy: 20 },
         cost: { crystal: 150, metal: 150, energy: 0 },
-        image: '/images/power_plant.webp'
+        image: '/images/power_plant_level1.webp'
     },
+    {
+        id: 'research-lab-1',
+        name: 'Research Lab Level 1',
+        level: 1,
+        production: { energy: -5 },
+        cost: { crystal: 200, metal: 400, energy: 20 },
+        image: '/images/lab_level1.webp'
+    },
+    {
+        id: 'base-1',
+        name: 'Command Center Level 1',
+        level: 1,
+        production: { crystal: 2, metal: 2, energy: 5 },
+        cost: { crystal: 500, metal: 500, energy: 50 },
+        image: '/images/base_level1.webp'
+    },
+
+    // Level 2 buildings
+    {
+        id: 'crystal-mine-2',
+        name: 'Crystal Mine Level 2',
+        level: 2,
+        production: { crystal: 25 },
+        cost: { crystal: 250, metal: 125, energy: 15 },
+        image: '/images/mine_level2.webp'
+    },
+    {
+        id: 'metal-refinery-2',
+        name: 'Metal Refinery Level 2',
+        level: 2,
+        production: { metal: 25 },
+        cost: { crystal: 125, metal: 250, energy: 15 },
+        image: '/images/factory_level2.webp'
+    },
+    {
+        id: 'power-plant-2',
+        name: 'Power Plant Level 2',
+        level: 2,
+        production: { energy: 50 },
+        cost: { crystal: 400, metal: 400, energy: 0 },
+        image: '/images/power_plant_level2.webp'
+    },
+    {
+        id: 'research-lab-2',
+        name: 'Research Lab Level 2',
+        level: 2,
+        production: { energy: -12 },
+        cost: { crystal: 500, metal: 1000, energy: 50 },
+        image: '/images/lab_level2.webp'
+    },
+    {
+        id: 'base-2',
+        name: 'Command Center Level 2',
+        level: 2,
+        production: { crystal: 5, metal: 5, energy: 12 },
+        cost: { crystal: 1250, metal: 1250, energy: 125 },
+        image: '/images/base_level2.webp'
+    },
+
+    // Level 3 buildings
+    {
+        id: 'crystal-mine-3',
+        name: 'Crystal Mine Level 3',
+        level: 3,
+        production: { crystal: 60 },
+        cost: { crystal: 625, metal: 315, energy: 40 },
+        image: '/images/mine_level3.webp'
+    },
+    {
+        id: 'metal-refinery-3',
+        name: 'Metal Refinery Level 3',
+        level: 3,
+        production: { metal: 60 },
+        cost: { crystal: 315, metal: 625, energy: 40 },
+        image: '/images/factory_level3.webp'
+    },
+    {
+        id: 'power-plant-3',
+        name: 'Power Plant Level 3',
+        level: 3,
+        production: { energy: 120 },
+        cost: { crystal: 1000, metal: 1000, energy: 0 },
+        image: '/images/power_plant_level3.webp'
+    },
+    {
+        id: 'research-lab-3',
+        name: 'Research Lab Level 3',
+        level: 3,
+        production: { energy: -30 },
+        cost: { crystal: 1250, metal: 2500, energy: 125 },
+        image: '/images/lab_level3.webp'
+    },
+    {
+        id: 'base-3',
+        name: 'Command Center Level 3',
+        level: 3,
+        production: { crystal: 12, metal: 12, energy: 30 },
+        cost: { crystal: 3125, metal: 3125, energy: 315 },
+        image: '/images/base_level3.webp'
+    },
+
     {
         id: 'hydroponic-farm',
         name: 'Hydroponic Farm',
@@ -32,14 +134,6 @@ const mockBuildings: Building[] = [
         production: { crystal: 5, energy: -2 },
         cost: { crystal: 80, metal: 120, energy: 10 },
         image: '/images/hydroponic_farm.webp'
-    },
-    {
-        id: 'research-lab',
-        name: 'Research Lab',
-        level: 1,
-        production: { energy: -5 },
-        cost: { crystal: 200, metal: 400, energy: 20 },
-        image: '/images/lab.webp'
     },
     {
         id: 'research-center',
@@ -56,14 +150,6 @@ const mockBuildings: Building[] = [
         production: { energy: -8 },
         cost: { crystal: 300, metal: 200, energy: 15 },
         image: '/images/oxygen_generator.webp'
-    },
-    {
-        id: 'base',
-        name: 'Command Center',
-        level: 1,
-        production: { crystal: 2, metal: 2, energy: 5 },
-        cost: { crystal: 500, metal: 500, energy: 50 },
-        image: '/images/base.webp'
     }
 ];
 
@@ -132,7 +218,7 @@ const mockVehicles: Vehicle[] = [
     }
 ] 
 
-export const mockPlanets: Planet[] = [
+const mockPlanets: Planet[] = [
     {
         id: 'arrakis',
         name: 'Arrakis',
@@ -175,4 +261,4 @@ export const mockPlanets: Planet[] = [
     }
 ];
 
-export { mockBuildings };
+export { mockBuildings, mockPlanets, mockVehicles };
