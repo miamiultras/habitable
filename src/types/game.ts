@@ -18,13 +18,22 @@ export interface Production {
     energy?: number;
 }
 
+export interface Storage {
+    crystal?: number;
+    metal?: number;
+    energy?: number;
+}
+
 export interface Building {
     id: string;
     name: string;
     image: string;
     level: number;
     cost: Cost;
-    production: Production;
+    production?: Production;
+    storage?: Storage;
+    upgradesToId?: string;
+    isUpgrade?: boolean;
 }
 
 export interface Vehicle {
