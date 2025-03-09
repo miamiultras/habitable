@@ -9,23 +9,27 @@ const mockBuildings: Building[] = [
         level: 1,
         production: { crystal: 2, metal: 2, energy: 5 },
         cost: { crystal: 500, metal: 500, energy: 50 },
-        image: '/images/buildings/base_level1.webp'
+        image: '/images/buildings/base_level1.webp',
+        upgradesToId: 'base-2'
     },
     {
         id: 'base-2',
         name: 'Command Center Level 2',
-        level: 1,
-        production: { crystal: 2, metal: 2, energy: 5 },
-        cost: { crystal: 500, metal: 500, energy: 50 },
-        image: '/images/buildings/base_level2.webp'
+        level: 2,
+        production: { crystal: 5, metal: 5, energy: 12 },
+        cost: { crystal: 1500, metal: 1500, energy: 150 },
+        image: '/images/buildings/base_level2.webp',
+        upgradesToId: 'base-3',
+        isUpgrade: true
     },
     {
         id: 'base-3',
         name: 'Command Center Level 3',
-        level: 1,
-        production: { crystal: 2, metal: 2, energy: 5 },
-        cost: { crystal: 500, metal: 500, energy: 50 },
-        image: '/images/buildings/base_level3.webp'
+        level: 3,
+        production: { crystal: 12, metal: 12, energy: 30 },
+        cost: { crystal: 4500, metal: 4500, energy: 450 },
+        image: '/images/buildings/base_level3.webp',
+        isUpgrade: true
     },
     // Mine progression
     {

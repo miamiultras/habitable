@@ -1,4 +1,4 @@
-import { ResourceType, Resources } from '@/types/game';
+import { Production, ResourceType, Resources } from '@/types/game';
 
 export const RESOURCE_TYPES: readonly ResourceType[] = ['metal', 'crystal', 'energy'] as const;
 
@@ -22,7 +22,7 @@ export function createResources(partial: Partial<Resources>): Resources {
 }
 
 // Returns a type-safe tuple array without any type assertions
-export function getResourceEntries(resources?: Resources): readonly (readonly [ResourceType, number])[] {
+export function getResourceEntries(resources?: Resources | Production): readonly (readonly [ResourceType, number])[] {
     if(!resources) return [];
     
     return RESOURCE_TYPES.map(key => [key, resources[key] ?? 0] as const);
