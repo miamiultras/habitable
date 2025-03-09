@@ -2,16 +2,12 @@ import { mockPlanets } from '@/lib/mockData';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { use } from 'react';
+import { getResourceEntries, getResourceImage } from '~/utils/resources';
 
 export default function PlanetBuildingsPage({ params }: { params: Promise<{ id: string }> }) {
     const resolvedParams = use(params);
     const planet = mockPlanets.find(p => p.id === resolvedParams.id);
     if (!planet) notFound();
-
-    const getResourceImage = (resource: string) => {
-        if (resource === 'energy') return '/images/energy.webp';
-        return `/images/${resource}.webp`;
-    };
 
     return (
         <div className="h-full overflow-y-auto">
@@ -38,7 +34,7 @@ export default function PlanetBuildingsPage({ params }: { params: Promise<{ id: 
                                                 <div className="font-pixel text-purple-300">{building.name}</div>
                                                 <div className="font-pixel text-[10px] text-gray-400">LEVEL {building.level}</div>
                                                 <div className="font-pixel text-[10px] text-green-400 mt-1">
-                                                    {Object.entries(building.production).map(([resource, amount]) => (
+                                                    {getResourceEntries(building.production).map(([resource, amount]) => (
                                                         <div key={resource} className="flex items-center gap-1">
                                                             <Image 
                                                                 src={getResourceImage(resource)} 
@@ -84,7 +80,7 @@ export default function PlanetBuildingsPage({ params }: { params: Promise<{ id: 
                                             <div className="font-pixel text-[10px] text-gray-400">
                                                 <div className="mb-2">COSTS:</div>
                                                 <div className="space-y-1">
-                                                    {Object.entries(building.cost).map(([resource, amount]) => (
+                                                    {getResourceEntries(building.cost).map(([resource, amount]) => (
                                                         <div key={resource} className="flex items-center gap-2">
                                                             <Image 
                                                                 src={getResourceImage(resource)} 

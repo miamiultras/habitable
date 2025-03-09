@@ -20,7 +20,7 @@ export default function HomePage() {
   return (
     <main className="relative min-h-screen bg-black">
       <Image
-        src="/images/terraformed_planet.webp"
+        src="/images/planets/terraformed_planet.webp"
         alt="Space background"
         fill
         className="object-cover"

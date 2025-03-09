@@ -1,22 +1,11 @@
 export type TerraformationPhase = 1 | 2 | 3 | 4;
 
-export interface Resources {
-    crystal: number;
-    metal: number;
-    energy: number;
-}
+export type ResourceType = 'metal' | 'crystal' | 'energy';
 
-export interface Cost {
-    crystal?: number;
-    metal?: number;
-    energy?: number;
-}
+export type Resources = Record<ResourceType, number | undefined>;
 
-export interface Production {
-    crystal?: number;
-    metal?: number;
-    energy?: number;
-}
+export type Cost = Record<ResourceType, number>;
+
 
 export interface Storage {
     crystal?: number;
@@ -30,7 +19,7 @@ export interface Building {
     image: string;
     level: number;
     cost: Cost;
-    production?: Production;
+    production?: Resources;
     storage?: Storage;
     upgradesToId?: string;
     isUpgrade?: boolean;

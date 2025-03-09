@@ -2,6 +2,7 @@ import { mockPlanets } from '@/lib/mockData';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { use } from 'react';
+import { getResourceImage, getResourceEntries } from '@/utils/resources';
 
 export default function PlanetPage({ params }: { params: Promise<{ id: string }> }) {
     const resolvedParams = use(params);
@@ -41,11 +42,11 @@ export default function PlanetPage({ params }: { params: Promise<{ id: string }>
                     <div className="bg-gray-800/50 p-4 md:p-6 rounded-lg border border-purple-500/20">
                         <h2 className="font-pixel text-purple-300 mb-4">RESOURCES</h2>
                         <div className="space-y-4">
-                            {Object.entries(planet.resources).map(([resource, amount]) => (
+                            {getResourceEntries(planet.resources).map(([resource, amount]) => (
                                 <div key={resource} className="flex items-center justify-between">
                                     <div className="flex items-center gap-3">
                                         <Image 
-                                            src={`/images/${resource}.webp`}
+                                            src={getResourceImage(resource)}
                                             alt={resource}
                                             width={24}
                                             height={24}

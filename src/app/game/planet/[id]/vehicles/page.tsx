@@ -2,16 +2,13 @@ import { mockPlanets } from '@/lib/mockData';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { use } from 'react';
+import { getResourceImage, getResourceEntries } from '@/utils/resources';
+import { ResourceType } from '~/types/game';
 
 export default function PlanetVehiclesPage({ params }: { params: Promise<{ id: string }> }) {
     const resolvedParams = use(params);
     const planet = mockPlanets.find(p => p.id === resolvedParams.id);
     if (!planet) notFound();
-
-    const getResourceImage = (resource: string) => {
-        if (resource === 'energy') return '/images/energy.webp';
-        return `/images/${resource}.webp`;
-    };
 
     return (
         <div className="h-full overflow-y-auto">
@@ -39,7 +36,7 @@ export default function PlanetVehiclesPage({ params }: { params: Promise<{ id: s
                                                 <div className="font-pixel text-[10px] text-gray-400">
                                                     <div className="mb-2">COSTS:</div>
                                                     <div className="space-y-1">
-                                                        {Object.entries(vehicle.cost).map(([resource, amount]) => (
+                                                        {getResourceEntries(vehicle.cost).map(([resource, amount]) => (
                                                             <div key={resource} className="flex items-center gap-2">
                                                                 <Image 
                                                                     src={getResourceImage(resource)} 

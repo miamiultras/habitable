@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Planet } from '@/types/game';
+import { resourceImages } from '~/lib/mockData';
 
 interface PlanetCardProps {
     planet: Planet;
@@ -29,15 +30,15 @@ export default function PlanetCard({ planet }: PlanetCardProps) {
 
                 <div className="grid grid-cols-3 gap-2">
                     <div className="flex items-center gap-2 font-pixel text-xs">
-                        <Image src="/images/crystal.webp" alt="Crystal" width={16} height={16} />
+                        <Image src={resourceImages.crystal} alt="Crystal" width={16} height={16} />
                         <span>{planet.resources.crystal}</span>
                     </div>
                     <div className="flex items-center gap-2 font-pixel text-xs">
-                        <Image src="/images/metal.webp" alt="Metal" width={16} height={16} />
+                        <Image src={resourceImages.metal} alt="Metal" width={16} height={16} />
                         <span>{planet.resources.metal}</span>
                     </div>
                     <div className="flex items-center gap-2 font-pixel text-xs">
-                        <Image src="/images/plasma_energy.webp" alt="Energy" width={16} height={16} />
+                        <Image src={resourceImages.energy} alt="Energy" width={16} height={16} />
                         <span>{planet.resources.energy}</span>
                     </div>
                 </div>
