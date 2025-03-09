@@ -2,7 +2,7 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { Planet } from "@/types/game";
+import type { Planet } from "@/types/game";
 
 interface PlanetNavProps {
     planet: Planet;

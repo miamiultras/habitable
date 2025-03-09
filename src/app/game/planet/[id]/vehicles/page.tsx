@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { use } from 'react';
 import { getResourceImage, getResourceEntries } from '@/utils/resources';
-import { ResourceType } from '~/types/game';
 
 export default function PlanetVehiclesPage({ params }: { params: Promise<{ id: string }> }) {
     const resolvedParams = use(params);

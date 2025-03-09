@@ -1,4 +1,4 @@
-import { Production, ResourceType, Resources } from '@/types/game';
+import type { Production, ResourceType, Resources } from '@/types/game';
 
 export const RESOURCE_TYPES: readonly ResourceType[] = ['metal', 'crystal', 'energy'] as const;
 

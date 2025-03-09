@@ -2,15 +2,12 @@ export type TerraformationPhase = 1 | 2 | 3 | 4;
 
 export type ResourceType = 'metal' | 'crystal' | 'energy';
 
-export type Resources = {
-    [key in ResourceType]: number;
-};
+// Base type for all resource-related records
+export type ResourceRecord = Record<ResourceType, number>;
 
-export type Production = {
-    [key in ResourceType]?: number;
-};
-
-export type Cost = Record<ResourceType, number>;
+export type Resources = ResourceRecord;
+export type Production = Partial<ResourceRecord>;
+export type Cost = ResourceRecord;
 
 export interface Storage {
     crystal?: number;

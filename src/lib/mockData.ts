@@ -1,4 +1,4 @@
-import { Planet, Building, Vehicle } from '@/types/game';
+import type { Planet, Building, Vehicle } from '@/types/game';
 import { createResources } from '@/utils/resources';
 
 const mockBuildings: Building[] = [
