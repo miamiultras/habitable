@@ -47,9 +47,11 @@ export default function PlanetBuildingsPage({ params }: { params: Promise<{ id: 
                                                     ))}
                                                 </div>
                                             </div>
-                                            <button className="mt-auto w-full px-4 py-2 bg-purple-500/20 rounded text-purple-300 font-pixel text-xs hover:bg-purple-500/30">
-                                                UPGRADE
-                                            </button>
+                                            {building.upgradesToId && (
+                                                <button className="mt-auto w-full px-4 py-2 bg-purple-500/20 rounded text-purple-300 font-pixel text-xs hover:bg-purple-500/30">
+                                                    UPGRADE
+                                                </button>
+                                            )}
                                         </div>
                                     </div>
                                 </div>

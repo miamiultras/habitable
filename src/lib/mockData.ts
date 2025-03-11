@@ -359,14 +359,37 @@ const mockVehicles: Vehicle[] = [
     }
 ]
 
+function getBuildingType(buildingId: string): string {
+    return buildingId.split('-')[0] || '';
+}
+
+function getBuildingById(id: string): Building | undefined {
+    return mockBuildings.find(b => b.id === id);
+}
+
+function getBuildingsByIds(ids: string[]): Building[] {
+    return ids.map(id => getBuildingById(id)!).filter(Boolean);
+}
+
+function getAvailableBuildings(existingBuildings: Building[]): Building[] {
+    const existingTypes = new Set(
+        existingBuildings.map(b => getBuildingType(b.id))
+    );
+    
+    return mockBuildings.filter(building => 
+        building.level === 1 && 
+        !existingTypes.has(getBuildingType(building.id))
+    );
+}
+
 const mockPlanets: Planet[] = [
     {
         id: 'arrakis',
         name: 'Arrakis',
         terraformationPhase: 1,
         resources: createResources({ crystal: 1000, metal: 500, energy: 200 }),
-        buildings: [mockBuildings[0]!],
-        availableBuildings: mockBuildings.filter(b => b.level === 1),
+        buildings: getBuildingsByIds(['base-1']),
+        availableBuildings: getAvailableBuildings(getBuildingsByIds(['base-1'])),
         image: '/images/planets/unterraformed_planet.webp',
         vehicles: mockVehicles
     },
@@ -375,8 +398,18 @@ const mockPlanets: Planet[] = [
         name: 'Caladan',
         terraformationPhase: 2,
         resources: createResources({ crystal: 2000, metal: 1000, energy: 400 }),
-        buildings: mockBuildings,
-        availableBuildings: mockBuildings,
+        buildings: getBuildingsByIds([
+            'base-2',
+            'mine-1',
+            'power-plant-1',
+            'factory-1'
+        ]),
+        availableBuildings: getAvailableBuildings(getBuildingsByIds([
+            'base-2',
+            'mine-1',
+            'power-plant-1',
+            'factory-1'
+        ])),
         image: '/images/planets/partially_terraformed.webp',
         vehicles: mockVehicles
     },
@@ -385,8 +418,22 @@ const mockPlanets: Planet[] = [
         name: 'Giedi Prime',
         terraformationPhase: 3,
         resources: createResources({ crystal: 3000, metal: 1500, energy: 600 }),
-        buildings: mockBuildings,
-        availableBuildings: mockBuildings,
+        buildings: getBuildingsByIds([
+            'base-3',
+            'mine-2',
+            'power-plant-2',
+            'factory-2',
+            'lab-1',
+            'storage-1'
+        ]),
+        availableBuildings: getAvailableBuildings(getBuildingsByIds([
+            'base-3',
+            'mine-2',
+            'power-plant-2',
+            'factory-2',
+            'lab-1',
+            'storage-1'
+        ])),
         image: '/images/planets/terraformed_planet.webp',
         vehicles: mockVehicles
     },
@@ -395,13 +442,30 @@ const mockPlanets: Planet[] = [
         name: 'Ix',
         terraformationPhase: 4,
         resources: createResources({ crystal: 4000, metal: 2000, energy: 800 }),
-        buildings: mockBuildings,
-        availableBuildings: mockBuildings,
+        buildings: getBuildingsByIds([
+            'base-3',
+            'mine-3',
+            'power-plant-3',
+            'factory-3',
+            'lab-2',
+            'storage-2',
+            'shipyard-1',
+            'refinery-1'
+        ]),
+        availableBuildings: getAvailableBuildings(getBuildingsByIds([
+            'base-3',
+            'mine-3',
+            'power-plant-3',
+            'factory-3',
+            'lab-2',
+            'storage-2',
+            'shipyard-1',
+            'refinery-1'
+        ])),
         image: '/images/planets/advanced_terraformed.webp',
         vehicles: mockVehicles
     }
 ];
-
 
 const resourceImages = {
     metal: '/images/resources/metal.webp',
