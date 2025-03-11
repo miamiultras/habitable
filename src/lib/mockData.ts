@@ -360,7 +360,7 @@ const mockVehicles: Vehicle[] = [
 ]
 
 function getBuildingType(buildingId: string): string {
-    return buildingId.split('-')[0] || '';
+    return buildingId.split('-')[0] ?? '';
 }
 
 function getBuildingById(id: string): Building | undefined {
