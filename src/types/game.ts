@@ -39,6 +39,9 @@ export interface Vehicle {
         power?: number;
         range?: number;
     };
+    level: number;
+    upgradesToId?: string;
+    isUpgrade?: boolean;
 }
 
 export interface Planet {

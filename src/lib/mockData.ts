@@ -295,10 +295,12 @@ const mockBuildings: Building[] = [
 ];
 
 const mockVehicles: Vehicle[] = [
+    // Battle Ship progression
     {
-        id: 'battle_ship_1',
-        name: 'BATTLE SHIP',
-        image: '/images/fleet/battle_ship.webp',
+        id: 'battle_ship_level1',
+        name: 'Battle Ship Level 1',
+        level: 1,
+        image: '/images/fleet/battle_ship_level1.webp',
         type: 'space',
         cost: {
             metal: 1000,
@@ -309,12 +311,53 @@ const mockVehicles: Vehicle[] = [
             power: 500,
             speed: 100,
             range: 1000
-        }
+        },
+        upgradesToId: 'battle_ship_level2'
     },
     {
-        id: 'scout_ship_1',
-        name: 'SCOUT SHIP',
-        image: '/images/fleet/scout_ship.webp',
+        id: 'battle_ship_level2',
+        name: 'Battle Ship Level 2',
+        level: 2,
+        image: '/images/fleet/battle_ship_level2.webp',
+        type: 'space',
+        cost: {
+            metal: 2500,
+            crystal: 1250,
+            energy: 500
+        },
+        stats: {
+            power: 1200,
+            speed: 120,
+            range: 1200
+        },
+        isUpgrade: true,
+        upgradesToId: 'battle_ship_level3'
+    },
+    {
+        id: 'battle_ship_level3',
+        name: 'Battle Ship Level 3',
+        level: 3,
+        image: '/images/fleet/battle_ship_level3.webp',
+        type: 'space',
+        cost: {
+            metal: 6000,
+            crystal: 3000,
+            energy: 1200
+        },
+        stats: {
+            power: 3000,
+            speed: 150,
+            range: 1500
+        },
+        isUpgrade: true
+    },
+    
+    // Scout Ship progression
+    {
+        id: 'scout_ship_level1',
+        name: 'Scout Ship Level 1',
+        level: 1,
+        image: '/images/fleet/scout_ship_level1.webp',
         type: 'space',
         cost: {
             metal: 300,
@@ -322,14 +365,56 @@ const mockVehicles: Vehicle[] = [
             energy: 50
         },
         stats: {
+            power: 100,
             speed: 200,
             range: 2000
-        }
+        },
+        upgradesToId: 'scout_ship_level2'
     },
     {
-        id: 'transport_ship_1',
-        name: 'TRANSPORT SHIP',
-        image: '/images/fleet/transport_ship.webp',
+        id: 'scout_ship_level2',
+        name: 'Scout Ship Level 2',
+        level: 2,
+        image: '/images/fleet/scout_ship_level2.webp',
+        type: 'space',
+        cost: {
+            metal: 750,
+            crystal: 250,
+            energy: 125
+        },
+        stats: {
+            power: 200,
+            speed: 300,
+            range: 3000
+        },
+        isUpgrade: true,
+        upgradesToId: 'scout_ship_level3'
+    },
+    {
+        id: 'scout_ship_level3',
+        name: 'Scout Ship Level 3',
+        level: 3,
+        image: '/images/fleet/scout_ship_level3.webp',
+        type: 'space',
+        cost: {
+            metal: 1800,
+            crystal: 600,
+            energy: 300
+        },
+        stats: {
+            power: 400,
+            speed: 450,
+            range: 4500
+        },
+        isUpgrade: true
+    },
+    
+    // Transport Ship progression
+    {
+        id: 'transport_ship_level1',
+        name: 'Transport Ship Level 1',
+        level: 1,
+        image: '/images/fleet/transport_ship_level1.webp',
         type: 'space',
         cost: {
             metal: 800,
@@ -340,12 +425,53 @@ const mockVehicles: Vehicle[] = [
             capacity: 5000,
             speed: 50,
             range: 1500
-        }
+        },
+        upgradesToId: 'transport_ship_level2'
     },
     {
-        id: 'exploration_rover_1',
-        name: 'EXPLORATION ROVER',
-        image: '/images/fleet/exploration_rover.webp',
+        id: 'transport_ship_level2',
+        name: 'Transport Ship Level 2',
+        level: 2,
+        image: '/images/fleet/transport_ship_level2.webp',
+        type: 'space',
+        cost: {
+            metal: 2000,
+            crystal: 1000,
+            energy: 250
+        },
+        stats: {
+            capacity: 12000,
+            speed: 75,
+            range: 2000
+        },
+        isUpgrade: true,
+        upgradesToId: 'transport_ship_level3'
+    },
+    {
+        id: 'transport_ship_level3',
+        name: 'Transport Ship Level 3',
+        level: 3,
+        image: '/images/fleet/transport_ship_level3.webp',
+        type: 'space',
+        cost: {
+            metal: 5000,
+            crystal: 2500,
+            energy: 600
+        },
+        stats: {
+            capacity: 30000,
+            speed: 100,
+            range: 3000
+        },
+        isUpgrade: true
+    },
+    
+    // Exploration Rover progression
+    {
+        id: 'exploration_rover_level1',
+        name: 'Exploration Rover Level 1',
+        level: 1,
+        image: '/images/fleet/exploration_rover_level1.webp',
         type: 'ground',
         cost: {
             metal: 200,
@@ -354,8 +480,47 @@ const mockVehicles: Vehicle[] = [
         },
         stats: {
             speed: 30,
-            range: 500
-        }
+            range: 500,
+            power: 50
+        },
+        upgradesToId: 'exploration_rover_level2'
+    },
+    {
+        id: 'exploration_rover_level2',
+        name: 'Exploration Rover Level 2',
+        level: 2,
+        image: '/images/fleet/exploration_rover_level2.webp',
+        type: 'ground',
+        cost: {
+            metal: 500,
+            crystal: 250,
+            energy: 125
+        },
+        stats: {
+            speed: 45,
+            range: 750,
+            power: 120
+        },
+        isUpgrade: true,
+        upgradesToId: 'exploration_rover_level3'
+    },
+    {
+        id: 'exploration_rover_level3',
+        name: 'Exploration Rover Level 3',
+        level: 3,
+        image: '/images/fleet/exploration_rover_level3.webp',
+        type: 'ground',
+        cost: {
+            metal: 1200,
+            crystal: 600,
+            energy: 300
+        },
+        stats: {
+            speed: 70,
+            range: 1200,
+            power: 300
+        },
+        isUpgrade: true
     }
 ]
 
