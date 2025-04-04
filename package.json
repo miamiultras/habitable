@@ -35,7 +35,7 @@
     "@types/eslint": "^8.56.12",
     "@types/node": "^20.17.30",
     "@types/react": "^18.3.20",
-    "@types/react-dom": "^18.3.5",
+    "@types/react-dom": "^18.3.6",
     "@typescript-eslint/eslint-plugin": "^8.29.0",
     "@typescript-eslint/parser": "^8.29.0",
     "drizzle-kit": "^0.24.2",
