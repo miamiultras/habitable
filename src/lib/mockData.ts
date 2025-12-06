@@ -522,7 +522,7 @@ const mockVehicles: Vehicle[] = [
         },
         isUpgrade: true
     }
-]
+];
 
 function getBuildingType(buildingId: string): string {
     return buildingId.split('-')[0] ?? '';
@@ -547,6 +547,36 @@ function getAvailableBuildings(existingBuildings: Building[]): Building[] {
     );
 }
 
+function getVehicleType(vehicleId: string): string {
+    return vehicleId.split('_level')[0] ?? '';
+}
+
+function getVehicleById(id: string): Vehicle | undefined {
+    return mockVehicles.find(v => v.id === id);
+}
+
+function getVehiclesByIds(ids: string[]): Vehicle[] {
+    return ids.map(id => getVehicleById(id)!).filter(Boolean);
+}
+
+function getAvailableVehicles(existingVehicles: Vehicle[]): Vehicle[] {
+    const existingTypes = new Set(
+        existingVehicles.map(v => getVehicleType(v.id))
+    );
+    
+    return mockVehicles.filter(vehicle => 
+        vehicle.level === 1 && 
+        !existingTypes.has(getVehicleType(vehicle.id))
+    );
+}
+
+const planetVehicles = {
+    arrakis: getVehiclesByIds(['exploration_rover_level1']),
+    caladan: getVehiclesByIds(['exploration_rover_level2', 'scout_ship_level1']),
+    giediPrime: getVehiclesByIds(['exploration_rover_level3', 'scout_ship_level2', 'transport_ship_level1']),
+    ix: getVehiclesByIds(['exploration_rover_level3', 'scout_ship_level3', 'transport_ship_level2', 'battle_ship_level1'])
+};
+
 const mockPlanets: Planet[] = [
     {
         id: 'arrakis',
@@ -556,7 +586,8 @@ const mockPlanets: Planet[] = [
         buildings: getBuildingsByIds(['base-1']),
         availableBuildings: getAvailableBuildings(getBuildingsByIds(['base-1'])),
         image: '/images/planets/unterraformed_planet.webp',
-        vehicles: mockVehicles
+        vehicles: planetVehicles.arrakis,
+        availableVehicles: getAvailableVehicles(planetVehicles.arrakis)
     },
     {
         id: 'caladan',
@@ -576,7 +607,8 @@ const mockPlanets: Planet[] = [
             'factory-1'
         ])),
         image: '/images/planets/partially_terraformed.webp',
-        vehicles: mockVehicles
+        vehicles: planetVehicles.caladan,
+        availableVehicles: getAvailableVehicles(planetVehicles.caladan)
     },
     {
         id: 'giedi-prime',
@@ -600,7 +632,8 @@ const mockPlanets: Planet[] = [
             'storage-1'
         ])),
         image: '/images/planets/terraformed_planet.webp',
-        vehicles: mockVehicles
+        vehicles: planetVehicles.giediPrime,
+        availableVehicles: getAvailableVehicles(planetVehicles.giediPrime)
     },
     {
         id: 'ix',
@@ -628,7 +661,8 @@ const mockPlanets: Planet[] = [
             'refinery-1'
         ])),
         image: '/images/planets/advanced_terraformed.webp',
-        vehicles: mockVehicles
+        vehicles: planetVehicles.ix,
+        availableVehicles: getAvailableVehicles(planetVehicles.ix)
     }
 ];
 
@@ -638,6 +672,14 @@ const resourceImages = {
     energy: '/images/resources/energy.webp'
 };
 
-export { mockBuildings, mockPlanets, mockVehicles, resourceImages };
+export { 
+    mockBuildings, 
+    mockPlanets, 
+    mockVehicles, 
+    resourceImages,
+    getVehicleById,
+    getVehiclesByIds,
+    getAvailableVehicles
+};
 
 

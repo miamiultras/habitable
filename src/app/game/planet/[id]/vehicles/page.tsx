@@ -14,7 +14,7 @@ export default function PlanetVehiclesPage({ params }: { params: Promise<{ id: s
             <div>
                 <section>
                     <div className="sticky top-0 bg-gray-900/95 border-b border-purple-500/20 z-10">
-                        <h2 className="font-pixel text-purple-300 p-4">AVAILABLE FLEET</h2>
+                        <h2 className="font-pixel text-purple-300 p-4">EXISTING FLEET</h2>
                     </div>
                     <div className="p-4">
                         <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
@@ -30,8 +30,60 @@ export default function PlanetVehiclesPage({ params }: { params: Promise<{ id: s
                                             />
                                         </div>
                                         <div className="flex flex-col flex-1">
+                                            <div>
+                                                <div className="font-pixel text-purple-300">{vehicle.name}</div>
+                                                <div className="font-pixel text-[10px] text-gray-400">LEVEL {vehicle.level}</div>
+                                                <div className="font-pixel text-[10px] text-green-400 mt-1">
+                                                    {Object.entries(vehicle.stats).map(([stat, value]) => (
+                                                        <div key={stat} className="flex items-center gap-1">
+                                                            <span>{stat.toUpperCase()}: {value}</span>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                            {vehicle.upgradesToId && (
+                                                <button className="mt-auto w-full px-4 py-2 bg-purple-500/20 rounded text-purple-300 font-pixel text-xs hover:bg-purple-500/30">
+                                                    UPGRADE
+                                                </button>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div className="sticky top-0 bg-gray-900/95 border-b border-purple-500/20 z-10">
+                        <h2 className="font-pixel text-purple-300 p-4">AVAILABLE FLEET</h2>
+                    </div>
+                    <div className="p-4">
+                        <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
+                            {planet.availableVehicles?.map(vehicle => (
+                                <div key={vehicle.id} className="bg-gray-800/50 p-4 rounded border border-purple-500/20">
+                                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+                                        <div className="w-full sm:w-48 h-48 relative">
+                                            <Image 
+                                                src={vehicle.image} 
+                                                alt={vehicle.name} 
+                                                fill
+                                                className="object-contain" 
+                                            />
+                                        </div>
+                                        <div className="flex flex-col justify-between flex-1">
                                             <div className="space-y-2">
                                                 <div className="font-pixel text-purple-300">{vehicle.name}</div>
+                                                <div className="font-pixel text-[10px] text-gray-400">
+                                                    <div className="mb-2">STATS:</div>
+                                                    <div className="space-y-1">
+                                                        {Object.entries(vehicle.stats).map(([stat, value]) => (
+                                                            <div key={stat} className="flex items-center gap-1">
+                                                                <span>{stat.toUpperCase()}: {value}</span>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
                                                 <div className="font-pixel text-[10px] text-gray-400">
                                                     <div className="mb-2">COSTS:</div>
                                                     <div className="space-y-1">

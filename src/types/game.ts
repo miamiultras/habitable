@@ -52,5 +52,6 @@ export interface Planet {
     resources: Resources;
     buildings: Building[];
     availableBuildings: Building[];
-    vehicles?: Vehicle[];
+    vehicles: Vehicle[];
+    availableVehicles: Vehicle[];
 }
